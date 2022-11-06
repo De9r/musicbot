@@ -24,7 +24,7 @@ from pyrogram import Client
 @errors
 async def play(_, message: Message):
 
-    lel = await message.reply(f"**{bn} :-** 🔄 Processing...")
+    lel = await message.reply(f"**{bn} :-** 🔄 انتظر قليلًا جاري المعالجة...")
     sender_id = message.from_user.id
     sender_name = message.from_user.first_name
     hell_pic = PLAY_PIC
@@ -34,7 +34,7 @@ async def play(_, message: Message):
                 [
                     InlineKeyboardButton(
                         text="🔊 Channel",
-                        url="https://t.me/The_HellBot")
+                        url="https://t.me/cn_world")
                    
                 ]
             ]
@@ -46,7 +46,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"**{bn} :-** ❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed to play!"
+                f"**{bn} :-** ❌ لا يمكنني تشغيل اغنية اطول من {DURATION_LIMIT} دقيقة جرب شيء اخر!"
             )
 
         file_name = get_file_name(audio)
@@ -57,17 +57,17 @@ async def play(_, message: Message):
     elif url:
         file_path = await converter.convert(youtube.download(url))
     else:
-        return await lel.edit_text(f"**{bn} :-**❗ You did not give me anything to play!")
+        return await lel.edit_text(f"**{bn} :-**❗ لم تعطني شيء لاقوم بشتغيله!")
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
-        await lel.edit(f"**{bn} :-** #️⃣ Queued at position #{position} !")
+        await lel.edit(f"**{bn} :-** #️⃣ في قائمة الانتظار #{position} !")
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
         await message.reply_photo(
         photo=hell_pic,
         reply_markup=keyboard,
-        caption="▶️ Playing song... \n**Requested By :-** {}!".format(
+        caption="▶️ تم تشغيل الاغنية... \n**طلب من :-** {}!".format(
         message.from_user.mention()
         ),
     )
@@ -78,7 +78,7 @@ async def play(_, message: Message):
 @errors
 async def play(_, message: Message):
 
-    lel = await message.reply(f"**{bn} :-** 🔎 Finding song...")
+    lel = await message.reply(f"**{bn} :-** 🔎 جار البحث...")
     sender_id = message.from_user.id
     user_id = message.from_user.id
     sender_name = message.from_user.first_name
@@ -108,7 +108,7 @@ async def play(_, message: Message):
 
     except Exception as e:
         lel.edit(
-            f"**{bn} :-** ❌ Song not found.\nTry another song or maybe try to spell it properly."
+            f"**{bn} :-** ❌ لم يتم العثور على اغنية.\nجرب شيء أخر."
         )
         print(str(e))
         return
@@ -117,7 +117,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="Watch On YouTube 🎬",
+                        text="شاهد على YouTube 🎬",
                         url=f"{url}")
                    
                 ]
@@ -128,7 +128,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="Watch On YouTube 🎬",
+                        text="شاهد على YouTube 🎬",
                         url=f"{url}")
                    
                 ]
@@ -138,12 +138,12 @@ async def play(_, message: Message):
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
     if audio:
-        await lel.edit_text(f"**{bn} :-** Hehe 🥴")
+        await lel.edit_text(f"**{bn} :-** هيهي. 🥴")
 
     elif url:
         file_path = await converter.convert(youtube.download(url))
     else:
-        return await lel.edit_text(f"**{bn} :-** ❗ You did not give me anything to play!")
+        return await lel.edit_text(f"**{bn} :-** ❗ لم تعطني شيء لاقوم بتشغيله!")
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
@@ -157,7 +157,7 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo=thumb_name,
         reply_markup=keyboard,
-        caption="▶️ **Playing** here the song requested by {}".format(
+        caption="▶️ **تم التشغيل** بطلب من {}".format(
         message.from_user.mention()
         ),
     )
