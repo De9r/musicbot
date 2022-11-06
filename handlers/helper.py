@@ -9,22 +9,21 @@ from helpers.filters import command, other_filters2, other_filters
 @Client.on_message(command("help") & other_filters2)
 async def helper(ok, message: Message):
     await message.reply_text(
-        f"""💞 Hello! Following are the commands available for **{bn}** - __A Group Voice Chat Music Player__.
-The commands I currently support are:
+        f"""💞 مرحبا الاوامر المتوفرة هي كالتالي **{bn}** - __A الاوامر المتاحة لتشغيل اغنية:
 
-🔥 **Users Commands :**
-⚜️ /play - **[ Groups Only ]** > __Plays the replied audio file or YouTube video through link.__
-⚜️ /song - **[ Groups & DM ]** > __Uploads the searched song in the chat.__
-⚜️ /ytplay - **[ Groups Only ]** > __Plays the song directly from YouTube Search.__
-⚜️ /repo - **[ DM Only ]** > __Gets the source code and YouTube Tutorial Video.__
+🔥 ** اوامر الاعضاء :**
+⚜️ /play - **[ في الكروب فقط ]** > __لتشغيل ملف صوتي بالرد عليه او من خلال الرابط.__
+⚜️ /song - **[ في الكروب & الخاص ]** > __لتحميل اغنية عن طريق كتبتة الامر ومعه اسم الاغنية.__
+⚜️ /ytplay - **[ في الكروب فقط ]** > __لتشغيل الاغنية عن طريق الاسم فقط.__
+⚜️ /repo - **[ الخاص فقط ]** > __Gets the source code and YouTube Tutorial Video.__
 
 
-🔰 **Admin & Sudo Users Commands :**
-⚜️ /pause - **[Groups Only ]** > __Pause Voice Chat Music.__
-⚜️ /resume - **[Groups Only ]** > __Resume Voice Chat Music.__
-⚜️ /skip - **[Groups Only ]** > __Skips the current Music Playing In Voice Chat.__
-⚜️ /stop - **[Groups Only ]** > __Clears The Queue as well as ends Voice Chat Music.__""")
+🔰 **اوامر الادمنية & المطور :**
+⚜️ /pause - **[الكروب فقط ]** > __ايقاف التشغيل مؤقتا.__
+⚜️ /resume - **[Groups Only ]** > __اطمال التشغيل.__
+⚜️ /skip - **[Groups Only ]** > __تخطي الاغنية.__
+⚜️ /stop - **[Groups Only ]** > __ ايقاف الاغنية.__""")
 
 @Client.on_message(command("help") & other_filters)
 async def ghelp(_, message: Message):
-    await message.reply_text(f"**{bn} :-** Hey! PM me to get all the commands 😉")
+    await message.reply_text(f"**{bn} :-** راسلني بالخاص حتى انطيك كل الاوامر 😉")
