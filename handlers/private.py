@@ -16,15 +16,15 @@ from config import BOT_NAME as bn, PLAY_PIC
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
     hell_pic = PLAY_PIC
-    hell = f"I am **{bn}** !!\nI let you play music in your group's voice chat 😉\nTo get all commands and their explanation do /help\n\nEnjoy Streaming Music 😉"
+    hell = f"I am **{bn}** !!\nيمكنني تشغيل الاغاني في المجموعه 😉\nارفعني مشرف بكروبك وانطيني صلاحية الاتصال والاضافة وارسل /help\n\nواستمتع 😉"
     butts = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    "Group 💬", url="https://t.me/Its_Fuckin_Hell"
+                    "Group 💬", url="https://t.me/+6kGmAETlS4IwYmUy"
                 ),
                 InlineKeyboardButton(
-                    "Channel 📣", url="https://t.me/The_HellBot"
+                    "Channel 📣", url="https://t.me/cn_world"
                 )
             ]
         ]
@@ -39,22 +39,19 @@ async def start(_, message: Message):
 @Client.on_message(command("repo") & other_filters2)
 async def repo(_, message: Message):
     await message.reply_text(
-        f"""🤠 Hoi!!
-I'm **{bn}** and below is the my source code 🙃
-
-Happy Streaming 😉
+        f"""🤠 هسة انت شعليك بهاي عوفها تخص المطور 😉
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Repo 📑", url="https://github.com/TheVaders/vc_bot"
+                        "Repo 📑", url="https://github.com/De9r"
                     ),
                     InlineKeyboardButton(
-                        "Channel 📣", url="https://t.me/The_HellBot"
+                        "Channel 📣", url="https://t.me/cn_world"
                     ),
                     InlineKeyboardButton (
-                        "Tutorial 🎬", url="https://youtu.be/XaH7VHURBVg"
+                        "Tutorial 🎬", url="https://youtu.be/Xa83jd_g_jnwo"
                     )
                 ]
             ]
@@ -67,7 +64,7 @@ async def ping(_, message: Message):
     hell_pic = PLAY_PIC
     await message.reply_photo(
     photo=hell_pic,
-    caption="I'm Alive and working fine. Do /help to get commands.\n\nHappy Streaming Music 😉",
+    caption="مازلت على قيد الحياة ارسل  /help للحصول على الاوامر.\n\nموسيقى سعيدة 😉",
 )
 
 
@@ -79,7 +76,7 @@ async def a(client, message: Message):
         query += ' ' + str(i)
     okvai = query.capitalize()
     print(query.capitalize())
-    m = await message.reply(f"**{bn} :-** 🔍 Searching for {okvai}")
+    m = await message.reply(f"**{bn} :-** 🔍 البحث عن {okvai}")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -108,15 +105,15 @@ async def a(client, message: Message):
             open(thumb_name, 'wb').write(thumb.content)
 
         except Exception as e:
-            m.edit(f"**{bn} :-** 😕 Found nothing. Try changing the spelling a little.\n\n{e}")
+            m.edit(f"**{bn} :-** 😕 لم اجد شيئا حاول تغيير الإملاء.\n\n{e}")
             return
     except Exception as e:
         m.edit(
-           f"**{bn} :-** 😕 Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
+           f"**{bn} :-** 😕 لم اجد شيء.\n\nجاول تجربة شيء اخر."
         )
         print(str(e))
         return
-    await m.edit(f"**{bn} :-** 📥 Downloading...\n**Query :-** {okvai}")
+    await m.edit(f"**{bn} :-** 📥 تحميل...\n** :-** {okvai}")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
