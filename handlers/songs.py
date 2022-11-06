@@ -19,7 +19,7 @@ async def a(client, message: Message):
         query += ' ' + str(i)
     okvai = query.capitalize()
     print(query.capitalize())
-    m = await message.reply(f"**{Bn} :-** 🔍 Searching for {okvai}")
+    m = await message.reply(f"**{Bn} :-** 🔍 البحث عن {okvai}")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -48,11 +48,11 @@ async def a(client, message: Message):
             open(thumb_name, 'wb').write(thumb.content)
 
         except Exception as e:
-            m.edit(f"**{Bn} :-** 😕 Found nothing. Try changing the spelling a little.\n\n{e}")
+            m.edit(f"**{Bn} :-** 😕 لم اجد شيء حاول تغيير الإملاء.\n\n{e}")
             return
     except Exception as e:
         m.edit(
-           f"**{Bn} :-** 😕 Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
+           f"**{Bn} :-** 😕 لم اجد شيء.\n\n حاول تجربة شيء اخر."
         )
         print(str(e))
         return
